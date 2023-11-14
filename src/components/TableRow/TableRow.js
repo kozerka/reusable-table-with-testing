@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import { StyledTd, StyledTr } from './TableRow.styled';
 const TableRow = ({ row, headersConfig }) => {
 	const getRowValue = (header, row) => {
 		switch (header.label) {
@@ -25,11 +25,11 @@ const TableRow = ({ row, headersConfig }) => {
 	};
 
 	return (
-		<tr>
+		<StyledTr>
 			{headersConfig.map(header => (
-				<td key={header.label}>{getRowValue(header, row)}</td>
+				<StyledTd key={header.label}>{getRowValue(header, row)}</StyledTd>
 			))}
-		</tr>
+		</StyledTr>
 	);
 };
 

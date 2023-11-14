@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import { PaginationContainer, PaginationButton, Dots } from './Pagination.styled';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-	// Funkcja do generowania zakresu stron
 	const pageNumbers = () => {
 		const pages = [];
 		if (currentPage > 1) pages.push(currentPage - 1);
@@ -12,27 +12,28 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 	};
 
 	return (
-		<div>
-			<button disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)}>
+		<PaginationContainer>
+			<PaginationButton disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)}>
 				Prev
-			</button>
-			{currentPage > 2 && <span>...</span>}
+			</PaginationButton>
+			{currentPage > 2 && <Dots>...</Dots>}
 			{pageNumbers().map(page => (
-				<button
+				<PaginationButton
 					key={page}
 					onClick={() => onPageChange(page)}
-					style={{
-						fontWeight: currentPage === page ? 'bold' : 'normal',
-					}}
+					isActive={currentPage === page}
 				>
 					{page}
-				</button>
+				</PaginationButton>
 			))}
-			{currentPage < totalPages - 1 && <span>...</span>}
-			<button disabled={currentPage === totalPages} onClick={() => onPageChange(currentPage + 1)}>
+			{currentPage < totalPages - 1 && <Dots>...</Dots>}
+			<PaginationButton
+				disabled={currentPage === totalPages}
+				onClick={() => onPageChange(currentPage + 1)}
+			>
 				Next
-			</button>
-		</div>
+			</PaginationButton>
+		</PaginationContainer>
 	);
 };
 

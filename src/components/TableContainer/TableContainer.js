@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Table from './Table';
-import Pagination from './Pagination';
+import Table from '../Table/Table';
+import { Pagination } from '..';
 import PropTypes from 'prop-types';
-import useSort from '../hooks/useSort';
-import Filter from './Filter';
-
+import useSort from '../../hooks/useSort';
+import Filter from '../Filter/Filter';
+import { PaginationInfo, Container } from './TableContainer.styled';
 const TableContainer = ({ headersConfig, rows }) => {
 	const { sortOrder, sortBy, setSortColumn, sortedData } = useSort(rows, headersConfig);
 	const rowsPerPage = 8;
@@ -29,7 +29,7 @@ const TableContainer = ({ headersConfig, rows }) => {
 		.map(header => ({ value: header.label, label: header.title }));
 
 	return (
-		<div>
+		<Container>
 			<Filter onFilterChange={setFilter} filterOptions={filterOptions} />
 			{filteredData.length > 0 ? (
 				<Table
@@ -49,12 +49,12 @@ const TableContainer = ({ headersConfig, rows }) => {
 						totalPages={filteredTotalPages}
 						onPageChange={page => setCurrentPage(page)}
 					/>
-					<div>
+					<PaginationInfo>
 						Displaying {indexOfFirstRow + 1} - {indexOfLastRow} of {filteredData.length} users
-					</div>
+					</PaginationInfo>
 				</>
 			)}
-		</div>
+		</Container>
 	);
 };
 

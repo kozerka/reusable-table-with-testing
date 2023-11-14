@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { StyledForm, StyledSelect, StyledInput, StyledButton, ErrorText } from './Filter.styled';
 
 const Filter = ({ onFilterChange, filterOptions }) => {
 	const [filter, setFilter] = useState({ field: '', value: '' });
@@ -27,22 +28,22 @@ const Filter = ({ onFilterChange, filterOptions }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<select name={'field'} onChange={handleChange} value={filter.field}>
+		<StyledForm onSubmit={handleSubmit}>
+			<StyledSelect name={'field'} onChange={handleChange} value={filter.field}>
 				<option value={''}>Select filter option</option>
 				{filterOptions.map(option => (
 					<option key={option.value} value={option.value}>
 						{option.label}
 					</option>
 				))}
-			</select>
-			<input name={'value'} onChange={handleChange} value={filter.value} />
-			<button type={'submit'}>Filter</button>
-			<button type={'button'} onClick={resetFilter}>
+			</StyledSelect>
+			<StyledInput name={'value'} onChange={handleChange} value={filter.value} />
+			<StyledButton type={'submit'}>Filter</StyledButton>
+			<StyledButton type={'button'} onClick={resetFilter}>
 				Reset
-			</button>
-			{error && <div style={{ color: 'red' }}>{error}</div>}
-		</form>
+			</StyledButton>
+			{error && <ErrorText>{error}</ErrorText>}
+		</StyledForm>
 	);
 };
 

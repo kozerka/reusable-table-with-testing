@@ -1,23 +1,22 @@
 import PropTypes from 'prop-types';
-import TableHeader from './TableHeader';
-import TableRow from './TableRow';
-
+import { TableRow, TableHeader } from '..';
+import { StyledTable, StyledTbody } from './Table.styled';
 const Table = ({ headersConfig, rows, onSort, sortBy, sortOrder }) => {
 	return (
 		<div>
-			<table>
+			<StyledTable>
 				<TableHeader
 					headersConfig={headersConfig}
 					onSort={onSort}
 					sortBy={sortBy}
 					sortOrder={sortOrder}
 				/>
-				<tbody>
+				<StyledTbody>
 					{rows.map((row, rowIndex) => (
 						<TableRow key={rowIndex} row={row} headersConfig={headersConfig} />
 					))}
-				</tbody>
-			</table>
+				</StyledTbody>
+			</StyledTable>
 		</div>
 	);
 };

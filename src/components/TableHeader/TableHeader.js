@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import { TiArrowSortedUp, TiArrowSortedDown, TiArrowUnsorted } from 'react-icons/ti';
-
+import { StyledThead, StyledTh, StyledTr, Cell } from './TableHeader.styled';
 const TableHeader = ({ headersConfig, onSort, sortBy, sortOrder }) => {
 	return (
-		<thead>
-			<tr>
+		<StyledThead>
+			<StyledTr>
 				{headersConfig.map(header => (
-					<th
+					<StyledTh
 						scope={'col'}
 						key={header.label}
 						onClick={() => header.isSortable && onSort(header.label)}
 					>
-						<div>
+						<Cell>
 							{header.isSortable && (
 								<>
 									{header.label !== sortBy && <TiArrowUnsorted size={'2rem'} />}
@@ -24,11 +24,11 @@ const TableHeader = ({ headersConfig, onSort, sortBy, sortOrder }) => {
 								</>
 							)}
 							{header.title}
-						</div>
-					</th>
+						</Cell>
+					</StyledTh>
 				))}
-			</tr>
-		</thead>
+			</StyledTr>
+		</StyledThead>
 	);
 };
 
