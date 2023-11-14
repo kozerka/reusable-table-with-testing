@@ -1,7 +1,14 @@
 import './App.css';
+import TableContainer from './components/TableContainer';
+import { users } from './db/users';
+import { headersConfig } from './utils/headersConfig';
 
 function App() {
-	return <h1>Table</h1>;
+	return (
+		<div>
+			<TableContainer rows={users} headersConfig={headersConfig} />
+		</div>
+	);
 }
 
 export default App;
