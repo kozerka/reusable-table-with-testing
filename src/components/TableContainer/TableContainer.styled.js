@@ -13,4 +13,19 @@ const Container = styled.div`
 	width: 100%;
 `;
 
-export { PaginationInfo, Container };
+const ErrorText = styled.div`
+	color: ${props => props.theme.colors.neutral};
+	background-color: ${props => props.theme.colors.accent};
+
+	height: 4rem;
+	line-height: 4rem;
+	padding: 0 2rem;
+	text-align: center;
+	font-size: 700;
+	border: none;
+	margin-top: 1rem;
+	border-radius: 5px;
+	color: ${props => props.theme.colors.text};
+`;
+
+export { PaginationInfo, Container, ErrorText };

@@ -4,7 +4,8 @@ import { Pagination } from '..';
 import PropTypes from 'prop-types';
 import useSort from '../../hooks/useSort';
 import Filter from '../Filter/Filter';
-import { PaginationInfo, Container } from './TableContainer.styled';
+import { PaginationInfo, Container, ErrorText } from './TableContainer.styled';
+
 const TableContainer = ({ headersConfig, rows }) => {
 	const { sortOrder, sortBy, setSortColumn, sortedData } = useSort(rows, headersConfig);
 	const rowsPerPage = 8;
@@ -40,7 +41,7 @@ const TableContainer = ({ headersConfig, rows }) => {
 					sortOrder={sortOrder}
 				/>
 			) : (
-				<div>Nie znaleziono danych spełniających kryteria.</div>
+				<ErrorText>No data found matching the search criteria.</ErrorText>
 			)}
 			{filteredTotalPages > 1 && (
 				<>
