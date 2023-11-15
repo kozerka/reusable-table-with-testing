@@ -14,12 +14,20 @@ const TableHeader = ({ headersConfig, onSort, sortBy, sortOrder }) => {
 						<Cell>
 							{header.isSortable && (
 								<>
-									{header.label !== sortBy && <TiArrowUnsorted size={'2rem'} />}
+									{header.label !== sortBy && (
+										<div data-testid={'TiArrowUnsorted'}>
+											<TiArrowUnsorted size={'2rem'} />
+										</div>
+									)}
 									{header.label === sortBy && sortOrder === 'asc' && (
-										<TiArrowSortedUp size={'2rem'} />
+										<div data-testid={'TiArrowSortedUp'}>
+											<TiArrowSortedUp size={'2rem'} />
+										</div>
 									)}
 									{header.label === sortBy && sortOrder === 'desc' && (
-										<TiArrowSortedDown size={'2rem'} />
+										<div data-testid={'TiArrowSortedDown'}>
+											<TiArrowSortedDown size={'2rem'} />
+										</div>
 									)}
 								</>
 							)}

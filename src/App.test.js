@@ -1,8 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
 
-test('renders learn react link', () => {
-	render(<App />);
-	const linkElement = screen.getByText(/learn react/i);
-	expect(linkElement).toBeInTheDocument();
+describe('App Component', () => {
+	const renderApp = () =>
+		render(
+			<ThemeProvider theme={theme}>
+				<App />
+			</ThemeProvider>
+		);
+
+	test('renders the TableContainer component', () => {
+		renderApp();
+		expect(screen.getByTestId('table-container')).toBeInTheDocument();
+	});
 });

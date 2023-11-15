@@ -30,7 +30,7 @@ const TableContainer = ({ headersConfig, rows }) => {
 		.map(header => ({ value: header.label, label: header.title }));
 
 	return (
-		<Container>
+		<Container data-testid={'table-container'}>
 			<Filter onFilterChange={setFilter} filterOptions={filterOptions} />
 			{filteredData.length > 0 ? (
 				<Table
