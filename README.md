@@ -1,70 +1,116 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Reusable Table Component
 
-## Available Scripts
+This is a reusable table component for displaying tabular data with features like sorting, filtering, and pagination. It is inspired by material-table and provides basic functionality for presenting and interacting with tabular data.
 
-In the project directory, you can run:
+<p align="center">
+  <img src="./src/assets/img/mock1.png" alt="Screenshot of app" width="800px">
+</p>
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![React Logo](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black) ![SCSS Logo](https://img.shields.io/badge/ESLint-4B32C3.svg?style=for-the-badge&logo=ESLint&logoColor=white) ![Prettier Logo](https://img.shields.io/badge/Prettier-F7B93E.svg?style=for-the-badge&logo=Prettier&logoColor=black) ![Webpack](https://img.shields.io/badge/Webpack-8DD6F9.svg?style=for-the-badge&logo=Webpack&logoColor=black) ![Styled Components](https://img.shields.io/badge/styledcomponents-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white) ![React-testing-library](https://img.shields.io/badge/Testing%20Library-E33332.svg?style=for-the-badge&logo=Testing-Library&logoColor=white) ![JEST](https://img.shields.io/badge/Jest-C21325.svg?style=for-the-badge&logo=Jest&logoColor=white)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Features
+- **Pagination**: Efficiently manage large data sets by dividing them into pages, providing a better user experience and performance.
+- **Column-based Filtering**: Allows users to filter data based on specific column values. This feature can be enabled or disabled for each column.
+- **Column-based Sorting**: Users can sort data in ascending or descending order based on any column. Like filtering, sorting can also be enabled or disabled per column.
+- **Toggle Filtering and Sorting**: Provides flexibility by allowing the enabling or disabling of filtering and sorting on specific columns.
+- **Error Messaging for Filtering**: When a user attempts to apply a filter without setting up the filtering option, an error message is displayed, guiding them to set up the filter correctly.
+- **No Results Messaging for Filtering**: If the applied filters yield no results, a friendly message informs the user that no data matches their filter criteria.
+- **Pagination with Filtering**: The pagination functionality takes into account any active filters, ensuring that the paginated data is consistent with the filtered results.
 
-### `npm test`
+### Implementation Details
+1. **Pagination**: Set the number of items per page and navigate through pages using the pagination controls.
+2. **Filtering**: Enable filtering on desired columns. Users can input their filter criteria in the provided field for each column.
+3. **Sorting**: Click on the column header to toggle between ascending and descending sorting order. Sorting preference is indicated visually.
+4. **Enabling/Disabling Features**: Use component props to enable or disable filtering and sorting for individual columns.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+1. **Clone the repository**:
+   ```bash
+   git clone [Repo-URL]
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Navigate to the project directory**:
+   ```bash
+   cd [Repo-Name]
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Run the application**:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+To use the Table component, you need to import it into your project with whole TableContainer and provide the necessary data and configuration. Here's how you can use it:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+import React from 'react';
+import { TableContainer } from './TableContainer directory' // Import your table component
+import { headersConfig } from './headersConfig directory'; // Import your table configuration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+function App() {
+  // Sample data
+  const data = [
+    // Your data objects here
+  ];
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  return (
+    <div>
+      <h1>Table Example</h1>
+      <TableContainer rows={data} headersConfig={headersConfig} />
+    </div>
+  );
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export default App;
+```
 
-## Learn More
+### Configuration
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The `headersConfig` contains an array of column configurations for your table. Each configuration object should have the following properties:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `label`: The column label to be displayed.
+- `title`: The column title to be displayed in the header.
+- `sortValue`: A function that extracts the sorting value from the data object for this column.
+- `isSortable`: A boolean indicating whether this column is sortable.
+- `isFilterable`: A boolean indicating whether this column is filterable.
 
-### Code Splitting
+### Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Testing for the Table components is done using Jest and react-testing-library. 
 
-### Analyzing the Bundle Size
+To run tests, you can use the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm test
+```
 
-### Making a Progressive Web App
+or
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+yarn test
+```
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This component uses styled-components for styling. You can customize the styling by modifying the styles in the component's files or by overriding the CSS in your project.
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](https://choosealicense.com/licenses/mit/)
+
+---
+
+Crafted with ❤️ by [kozerka].
+
+---
+&nbsp;
