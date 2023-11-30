@@ -8,39 +8,21 @@ export const headersConfig = [
 	},
 	{
 		label: 'firstName',
-		title: (
-			<>
-				First
-				<br />
-				Name
-			</>
-		),
+		title: 'First Name',
 		sortValue: item => item.firstName,
 		isSortable: true,
 		isFilterable: true,
 	},
 	{
 		label: 'lastName',
-		title: (
-			<>
-				Last
-				<br />
-				Name
-			</>
-		),
+		title: 'Last Name',
 		sortValue: item => item.lastName,
 		isSortable: true,
 		isFilterable: true,
 	},
 	{
 		label: 'date',
-		title: (
-			<>
-				Date
-				<br />
-				of birth
-			</>
-		),
+		title: 'Date of birth',
 		sortValue: item => item.birthDate,
 		isSortable: true,
 		isFilterable: false,

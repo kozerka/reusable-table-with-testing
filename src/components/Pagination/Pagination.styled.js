@@ -18,7 +18,9 @@ const PaginationButton = styled.button`
 	cursor: pointer;
 
 	background-color: ${props =>
-		props.isActive ? props.theme.colorsForButtons.secondary : props.theme.colorsForButtons.primary};
+		props.$isActive
+			? props.theme.colorsForButtons.secondary
+			: props.theme.colorsForButtons.primary};
 
 	color: ${props => props.theme.colors.text};
 

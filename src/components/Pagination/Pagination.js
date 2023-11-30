@@ -21,7 +21,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 				<PaginationButton
 					key={page}
 					onClick={() => onPageChange(page)}
-					isActive={currentPage === page}
+					$isActive={currentPage === page}
 				>
 					{page}
 				</PaginationButton>
